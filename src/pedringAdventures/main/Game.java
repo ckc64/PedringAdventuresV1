@@ -4,6 +4,10 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import pedringAdventures.main.display.Display;
+import pedringAdventures.main.gfx.Assets;
+import pedringAdventures.main.states.GameState;
+import pedringAdventures.main.states.MenuState;
+import pedringAdventures.main.states.State;
 
 public class Game implements Runnable {
 	
@@ -18,18 +22,30 @@ public class Game implements Runnable {
 	private BufferStrategy bs;
 	private Graphics g;
 	
+	//States
+	private State gameState;
+	private State menuState;
+	
 	public Game(String title, int width, int height){
 		this.width = width;
 		this.height = height;
 		this.title=title;
+		
+		gameState = new GameState();
+		menuState=new MenuState();
+		State.setState(gameState);
 	}
 	
 	private void init() {
 		display = new Display(title, width, height);
+		Assets.init();
 	}
 	//can be name as update
+
 	private void tick() {
-		
+		if(State.getState()!=null) {
+			State.getState().tick();
+		}
 	}
 	private void render() {
 		
@@ -43,6 +59,9 @@ public class Game implements Runnable {
 		g=bs.getDrawGraphics();
 		g.clearRect(0, 0, width, height);
 		//you can draw here
+		if(State.getState()!=null) {
+			State.getState().render(g);
+		}
 		//end of drawing
 		bs.show();
 		g.dispose();
@@ -51,11 +70,35 @@ public class Game implements Runnable {
 	public void run() {
 		
 		init();
-		while(running) {
-			tick();
-			render();
-		}
 		
+		int fps = 60;
+		double timePerTick = 1000000000 / fps;
+		double delta = 0;
+		long now;
+		long lastTime = System.nanoTime();
+		long timer = 0;
+		int ticks = 0;
+		
+		while(running) {
+			now = System.nanoTime();
+			delta += (now - lastTime) / timePerTick;
+			timer += now - lastTime;
+			lastTime = now;
+			
+			if(delta >= 1) { 
+				tick(); 
+				render();
+				ticks++;
+				delta--;
+			}
+			
+			if(timer >= 1000000000){
+				System.out.println("frames: " + ticks);
+//				normal = frames;
+				ticks = 0;
+				timer = 0;
+			}
+		}		
 		stop();
 		
 	}
