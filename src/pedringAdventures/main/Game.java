@@ -5,6 +5,7 @@ import java.awt.image.BufferStrategy;
 
 import pedringAdventures.main.display.Display;
 import pedringAdventures.main.gfx.Assets;
+import pedringAdventures.main.input.KeyManager;
 import pedringAdventures.main.states.GameState;
 import pedringAdventures.main.states.MenuState;
 import pedringAdventures.main.states.State;
@@ -26,23 +27,29 @@ public class Game implements Runnable {
 	private State gameState;
 	private State menuState;
 	
+	//input
+	private KeyManager keyManager;
+	
 	public Game(String title, int width, int height){
 		this.width = width;
 		this.height = height;
 		this.title=title;
-		
-		gameState = new GameState();
-		menuState=new MenuState();
+		keyManager=new KeyManager();
+		gameState = new GameState(this);
+		menuState=new MenuState(this);
 		State.setState(gameState);
 	}
 	
 	private void init() {
 		display = new Display(title, width, height);
+		display.getFrame().addKeyListener(keyManager);
 		Assets.init();
 	}
 	//can be name as update
 
 	private void tick() {
+		keyManager.tick();
+		
 		if(State.getState()!=null) {
 			State.getState().tick();
 		}
@@ -101,6 +108,10 @@ public class Game implements Runnable {
 		}		
 		stop();
 		
+	}
+	
+	public KeyManager getKeyManager() {
+		return keyManager;
 	}
 	
 	//this method here will call the run method by default

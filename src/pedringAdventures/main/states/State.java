@@ -2,6 +2,8 @@ package pedringAdventures.main.states;
 
 import java.awt.Graphics;
 
+import pedringAdventures.main.Game;
+
 public abstract class State {
 	
 	public static State currentState = null;
@@ -16,6 +18,13 @@ public abstract class State {
 //	public State(Handler handler, Transition tran){
 //		this.handler = handler; this.tran = tran;
 //	}
+	
+	//class
+	protected Game game;
+	
+	public State(Game game) {
+		this.game=game;
+	}
 	
 	public abstract void tick();
 	public abstract void render(Graphics g);
