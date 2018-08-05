@@ -5,6 +5,7 @@ import java.awt.image.BufferStrategy;
 
 import pedringAdventures.main.display.Display;
 import pedringAdventures.main.gfx.Assets;
+import pedringAdventures.main.gfx.GameCamera;
 import pedringAdventures.main.input.KeyManager;
 import pedringAdventures.main.states.GameState;
 import pedringAdventures.main.states.MenuState;
@@ -14,7 +15,8 @@ public class Game implements Runnable {
 	
 	private Display display;
 	
-	public int width, height;
+	private int width, height;
+	
 	public String title;
 	
 	private Thread thread;
@@ -30,20 +32,31 @@ public class Game implements Runnable {
 	//input
 	private KeyManager keyManager;
 	
+	//camera
+	private GameCamera gameCamera;
+	
+	//handler
+	private Handler handler;
+	
 	public Game(String title, int width, int height){
 		this.width = width;
 		this.height = height;
 		this.title=title;
 		keyManager=new KeyManager();
-		gameState = new GameState(this);
-		menuState=new MenuState(this);
-		State.setState(gameState);
+		
 	}
 	
 	private void init() {
 		display = new Display(title, width, height);
 		display.getFrame().addKeyListener(keyManager);
 		Assets.init();
+		handler = new Handler(this);
+		gameCamera=new GameCamera(handler,0, 0);
+		
+		gameState = new GameState(handler);
+		menuState=new MenuState(handler);
+		State.setState(gameState);
+		
 	}
 	//can be name as update
 
@@ -112,6 +125,17 @@ public class Game implements Runnable {
 	
 	public KeyManager getKeyManager() {
 		return keyManager;
+	}
+	
+	public GameCamera getGameCamera() {
+		return gameCamera;
+	}
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
 	}
 	
 	//this method here will call the run method by default

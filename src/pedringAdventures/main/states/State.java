@@ -3,6 +3,7 @@ package pedringAdventures.main.states;
 import java.awt.Graphics;
 
 import pedringAdventures.main.Game;
+import pedringAdventures.main.Handler;
 
 public abstract class State {
 	
@@ -20,10 +21,10 @@ public abstract class State {
 //	}
 	
 	//class
-	protected Game game;
+	protected Handler handler;
 	
-	public State(Game game) {
-		this.game=game;
+	public State(Handler handler) {
+		this.handler=handler;
 	}
 	
 	public abstract void tick();

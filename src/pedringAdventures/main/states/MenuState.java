@@ -3,11 +3,12 @@ package pedringAdventures.main.states;
 import java.awt.Graphics;
 
 import pedringAdventures.main.Game;
+import pedringAdventures.main.Handler;
 
 public class MenuState extends State {
 
-	public MenuState(Game game) {
-		super(game);
+	public MenuState(Handler handler) {
+		super(handler);
 		// TODO Auto-generated constructor stub
 	}
 	
