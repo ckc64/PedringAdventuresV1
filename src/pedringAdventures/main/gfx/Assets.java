@@ -4,8 +4,7 @@ import java.awt.image.BufferedImage;
 
 public class Assets {
 private static final int tileWidth = 32, tileHeight = 32;
-private static final int charWidth=32, charHeight=32;
-private static final int groundAssetWidth=32, groundAssetHeight=32;	
+	
 	//Main Character
 	
 	public static BufferedImage[] player_up, player_down, player_left, player_right,player_idle;
@@ -35,8 +34,8 @@ private static final int groundAssetWidth=32, groundAssetHeight=32;
 				SpriteSheet groundAssets= new SpriteSheet(ImageLoader.loadImage("/textures/ground_assets.png"));
 			
 				//ground assets i.e trees,rock
-				treeOne=groundAssets.crop(0, 0, groundAssetWidth, groundAssetHeight+groundAssetHeight);
-				
+				treeOne=groundAssets.crop(0, 0, tileWidth, tileHeight+tileHeight);
+				grass=groundAssets.crop(tileWidth*4,tileHeight*2,tileWidth,tileHeight);
 				//ground tiles
 				grassTile = groundTiles.crop(0, 0, tileWidth, tileHeight);
 				sandTile = groundTiles.crop(0, tileHeight, tileWidth, tileHeight);
@@ -47,7 +46,7 @@ private static final int groundAssetWidth=32, groundAssetHeight=32;
 				sandTileBottomRight= groundTiles.crop(tileWidth*2,tileHeight,tileWidth,tileHeight);
 				
 				//player
-				samplePlayer = player.crop(0, 0, charWidth, charHeight);
+				samplePlayer = player.crop(0, 0, tileWidth, tileHeight);
 				
 				player_idle = new BufferedImage[3];
 				player_up = new BufferedImage[3];
@@ -55,25 +54,25 @@ private static final int groundAssetWidth=32, groundAssetHeight=32;
 				player_left = new BufferedImage[3];
 				player_right = new BufferedImage[3];
 				
-				player_down[0]=player.crop(0, 0, charWidth, charHeight);
-				player_down[1]=player.crop(charWidth, 0, charWidth, charHeight);
-				player_down[2]=player.crop(charWidth*2, 0, charWidth, charHeight);
+				player_down[0]=player.crop(0, 0, tileWidth, tileHeight);
+				player_down[1]=player.crop(tileWidth, 0, tileWidth, tileHeight);
+				player_down[2]=player.crop(tileWidth*2, 0, tileWidth, tileHeight);
 
-				player_left[0]=player.crop(0, charHeight, charWidth, charHeight);
-				player_left[1]=player.crop(charWidth, charHeight, charWidth, charHeight);
-				player_left[2]=player.crop(charWidth*2, charHeight, charHeight, charHeight);
+				player_left[0]=player.crop(0, tileHeight, tileWidth, tileHeight);
+				player_left[1]=player.crop(tileWidth, tileHeight, tileWidth, tileHeight);
+				player_left[2]=player.crop(tileWidth*2, tileHeight, tileHeight, tileHeight);
 				
-				player_right[0]=player.crop(0, charHeight*2, charWidth, charHeight);
-				player_right[1]=player.crop(charWidth, charHeight*2, charWidth, charHeight);
-				player_right[2]=player.crop(charWidth*2, charHeight*2, charHeight, charHeight);
+				player_right[0]=player.crop(0, tileHeight*2, tileWidth, tileHeight);
+				player_right[1]=player.crop(tileWidth, tileHeight*2, tileWidth, tileHeight);
+				player_right[2]=player.crop(tileWidth*2, tileHeight*2, tileHeight, tileHeight);
 				
-				player_up[0]=player.crop(0, charHeight*3, charWidth, charHeight);
-				player_up[1]=player.crop(charWidth, charHeight*3, charWidth, charHeight);
-				player_up[2]=player.crop(charWidth*2, charHeight*3, charWidth, charHeight);
+				player_up[0]=player.crop(0, tileHeight*3, tileWidth, tileHeight);
+				player_up[1]=player.crop(tileWidth, tileHeight*3, tileWidth, tileHeight);
+				player_up[2]=player.crop(tileWidth*2, tileHeight*3, tileWidth, tileHeight);
 				
-				player_idle[0]=player.crop(0, charHeight*4, charWidth, charHeight);
-				player_idle[1]=player.crop(charWidth, charHeight*4, charWidth, charHeight);
-				player_idle[2]=player.crop(charWidth*2, charHeight*4, charWidth, charHeight);
+				player_idle[0]=player.crop(0, tileHeight*4, tileWidth, tileHeight);
+				player_idle[1]=player.crop(tileWidth, tileHeight*4, tileWidth, tileHeight);
+				player_idle[2]=player.crop(tileWidth*2, tileHeight*4, tileWidth, tileHeight);
 				
 		}catch(Exception e) {
 			System.out.println("No Image : "+e);

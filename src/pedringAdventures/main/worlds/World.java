@@ -4,6 +4,9 @@ import java.awt.Graphics;
 
 import pedringAdventures.main.Game;
 import pedringAdventures.main.Handler;
+import pedringAdventures.main.entities.EntityManager;
+import pedringAdventures.main.entities.creatures.Player;
+import pedringAdventures.main.entities.statics.Grass;
 import pedringAdventures.main.tiles.Tile;
 import pedringAdventures.main.utils.Utils;
 
@@ -14,13 +17,24 @@ public class World {
 	private int spawnX,spawnY;
 	private int[][] tiles;
 	
+	//entities
+	private EntityManager entityManager; 
+	
 	public World(Handler handler,String path) {
 		this.handler=handler;
+		entityManager= new EntityManager(handler, new  Player(handler, 100, 100));
+		entityManager.addEntity(new Grass(handler,0,0));
+		entityManager.addEntity(new Grass(handler,32,0));
+		entityManager.addEntity(new Grass(handler,32*2,0));
 		loadWorld(path);
+		entityManager.getPlayer().setX(spawnX);
+		entityManager.getPlayer().setY(spawnY);
 	}
 	
+
+
 	public void tick() {
-		
+		entityManager.tick();
 	}
 	
 	public void render(Graphics g) {
@@ -29,6 +43,7 @@ public class World {
 				getTile(x, y).render(g, (int) (x*Tile.TILEWIDTH-handler.getGameCamera().getxOffset()), (int)(y*Tile.TILEHEIGHT-handler.getGameCamera().getyOffset()));
 			}
 		}
+		entityManager.render(g);
 	}
 	
 	public Tile getTile(int x,int y) {
@@ -64,6 +79,10 @@ public class World {
 	}
 	public int getHeight() {
 		return height;
+	}
+	
+	public EntityManager getEntityManager() {
+		return entityManager;
 	}
 	
 }
