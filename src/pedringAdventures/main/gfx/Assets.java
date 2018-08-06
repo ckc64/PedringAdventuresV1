@@ -3,9 +3,9 @@ package pedringAdventures.main.gfx;
 import java.awt.image.BufferedImage;
 
 public class Assets {
-private static final int tileWidth = 64, tileHeight = 64;
+private static final int tileWidth = 32, tileHeight = 32;
 private static final int charWidth=32, charHeight=32;
-	
+private static final int groundAssetWidth=32, groundAssetHeight=32;	
 	//Main Character
 	
 	public static BufferedImage[] player_up, player_down, player_left, player_right,player_idle;
@@ -29,9 +29,15 @@ private static final int charWidth=32, charHeight=32;
 	public static void init() {
 		
 		try {
-				SpriteSheet groundTiles=new SpriteSheet(ImageLoader.loadImage("/textures/ground_tiles.png"));
+			//coordinates x,y and the width and height
+				SpriteSheet groundTiles=new SpriteSheet(ImageLoader.loadImage("/textures/ground_tiles16px.png"));
 				SpriteSheet player=new SpriteSheet(ImageLoader.loadImage("/textures/pedring.png"));
-			 //coordinates x,y and the width and height
+				SpriteSheet groundAssets= new SpriteSheet(ImageLoader.loadImage("/textures/ground_assets.png"));
+			
+				//ground assets i.e trees,rock
+				treeOne=groundAssets.crop(0, 0, groundAssetWidth, groundAssetHeight+groundAssetHeight);
+				
+				//ground tiles
 				grassTile = groundTiles.crop(0, 0, tileWidth, tileHeight);
 				sandTile = groundTiles.crop(0, tileHeight, tileWidth, tileHeight);
 				
