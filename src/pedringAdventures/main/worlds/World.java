@@ -7,6 +7,8 @@ import pedringAdventures.main.Handler;
 import pedringAdventures.main.entities.EntityManager;
 import pedringAdventures.main.entities.creatures.Player;
 import pedringAdventures.main.entities.statics.Grass;
+import pedringAdventures.main.entities.statics.TreeOne;
+import pedringAdventures.main.entities.statics.houses.MainMap_HouseOne;
 import pedringAdventures.main.tiles.Tile;
 import pedringAdventures.main.utils.Utils;
 
@@ -23,9 +25,79 @@ public class World {
 	public World(Handler handler,String path) {
 		this.handler=handler;
 		entityManager= new EntityManager(handler, new  Player(handler, 100, 100));
-		entityManager.addEntity(new Grass(handler,0,0));
+		
+		//grassTOP
+		for(int i=1;i<83;i++) {entityManager.addEntity(new Grass(handler,32*i,32));}
 		entityManager.addEntity(new Grass(handler,32,0));
-		entityManager.addEntity(new Grass(handler,32*2,0));
+		for(int i=1;i<=100;i++){entityManager.addEntity(new Grass(handler,32*i,0));}
+		
+		//grassLeft
+		entityManager.addEntity(new Grass(handler,0, 0));
+		for(int i=1;i<=100;i++){entityManager.addEntity(new Grass(handler,0,32*i));}
+		//grassbottom
+		entityManager.addEntity(new Grass(handler,32, 32*50));
+		for(int i=1;i<=100;i++){entityManager.addEntity(new Grass(handler,32*i,32*50));}
+		for(int i=1;i<=100;i++){entityManager.addEntity(new Grass(handler,32*i,32*51));}
+		//grassRight
+		entityManager.addEntity(new Grass(handler,32*83, 0));
+		for(int i=1;i<=29;i++){entityManager.addEntity(new Grass(handler,32*83,32*i));}
+		for(int i=34;i<=50;i++){entityManager.addEntity(new Grass(handler,32*83,32*i));}
+		//after right
+		for(int i=1;i<=29;i++){entityManager.addEntity(new Grass(handler,32*84,32*i));}
+		for(int i=34;i<=50;i++){entityManager.addEntity(new Grass(handler,32*84,32*i));}
+		for(int i=1;i<=29;i++){entityManager.addEntity(new Grass(handler,32*85,32*i));}
+		for(int i=34;i<=50;i++){entityManager.addEntity(new Grass(handler,32*85,32*i));}
+		
+		//treescattered
+		
+		//trees left side
+		entityManager.addEntity(new TreeOne(handler,32*17, 32*14));
+		entityManager.addEntity(new TreeOne(handler,32*17, 32*20));
+		entityManager.addEntity(new TreeOne(handler,32*36, 32*22));
+		entityManager.addEntity(new TreeOne(handler,32*29, 32*8));
+		entityManager.addEntity(new TreeOne(handler,32*25, 32*14));
+		
+		
+	
+		entityManager.addEntity(new TreeOne(handler,32*6, 32*26));
+		entityManager.addEntity(new TreeOne(handler,32*12, 32*26));
+		entityManager.addEntity(new TreeOne(handler,32*20, 32*26));
+
+		
+		entityManager.addEntity(new TreeOne(handler,32*15, 32*32));
+		
+		entityManager.addEntity(new TreeOne(handler,32*20, 32*35));
+		entityManager.addEntity(new TreeOne(handler,32*20, 32*40));
+		entityManager.addEntity(new TreeOne(handler,32*26, 32*34));
+		entityManager.addEntity(new TreeOne(handler,32*26, 32*39));
+		entityManager.addEntity(new TreeOne(handler,32*36, 32*32));
+		
+		entityManager.addEntity(new TreeOne(handler,32*28, 32*30));
+		//end left side trees
+		
+		//trees right side
+		entityManager.addEntity(new TreeOne(handler,32*42, 32*22));
+		entityManager.addEntity(new TreeOne(handler,32*56, 32*20));
+		entityManager.addEntity(new TreeOne(handler,32*60, 32*31));
+		entityManager.addEntity(new TreeOne(handler,32*60, 32*26));
+		entityManager.addEntity(new TreeOne(handler,32*66, 32*26));
+		entityManager.addEntity(new TreeOne(handler,32*72, 32*26));
+		
+		entityManager.addEntity(new TreeOne(handler,32*60, 32*3));
+		entityManager.addEntity(new TreeOne(handler,32*56, 32*7));
+		entityManager.addEntity(new TreeOne(handler,32*60, 32*10));
+		entityManager.addEntity(new TreeOne(handler,32*63, 32*13));
+		//end trees right side
+		
+		//end trees scattered
+		
+		//houses
+			entityManager.addEntity(new MainMap_HouseOne(handler, 150, 120));
+			
+		//end houses
+		
+		
+		
 		loadWorld(path);
 		entityManager.getPlayer().setX(spawnX);
 		entityManager.getPlayer().setY(spawnY);

@@ -14,7 +14,7 @@ public class Tile {
 	public static Tile sandTileUpperRight=new SandTileUpperRight(3);
 	public static Tile sandTileUpperBottomLeft=new SandTileBottomLeft(4);
 	public static Tile sandTileBottomRight=new SandTileBottomRight(5);
-	
+	public static Tile blackTile=new BlackTile(6);
 	//class
 	public static final int TILEWIDTH=64,TILEHEIGHT=64;
 	
