@@ -37,6 +37,9 @@ private static final int charWidth = 32, charHeight = 32;
 				//ground assets i.e trees,rock
 				treeOne=groundAssets.crop(0, 0, tileWidth, tileHeight+tileHeight);
 				grass=groundAssets.crop(tileWidth*4,tileHeight*2,tileWidth,tileHeight);
+				grassTwo=groundAssets.crop(tileWidth*3, tileHeight*2, tileWidth, tileHeight);
+				BigTreeCenter=groundAssets.crop(tileWidth*13, 0, tileWidth*4, tileHeight*5);
+				treeTwo=groundAssets.crop(tileWidth*6, tileHeight, tileWidth*2, tileHeight*2);
 				//ground tiles
 				grassTile = groundTiles.crop(0, 0, tileWidth, tileHeight);
 				sandTile = groundTiles.crop(0, tileHeight, tileWidth, tileHeight);
@@ -80,7 +83,9 @@ private static final int charWidth = 32, charHeight = 32;
 				//main map houses
 				
 				main_map_house_one=map1House.crop(0, 0, tileWidth*8, tileHeight*7);
-				
+				main_map_house_two=map1House.crop(tileWidth*8, 0, tileWidth*10, tileHeight*8);
+				main_map_house_three=map1House.crop(0, tileHeight*8, tileWidth*6, tileHeight*9);
+				main_map_house_four=map1House.crop(tileWidth*7, tileHeight*8, tileWidth*9, tileHeight*9);
 				//end main map houses
 				
 				

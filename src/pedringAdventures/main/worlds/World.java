@@ -8,7 +8,13 @@ import pedringAdventures.main.entities.EntityManager;
 import pedringAdventures.main.entities.creatures.Player;
 import pedringAdventures.main.entities.statics.Grass;
 import pedringAdventures.main.entities.statics.TreeOne;
+import pedringAdventures.main.entities.statics.houses.MainMap_HouseFour;
 import pedringAdventures.main.entities.statics.houses.MainMap_HouseOne;
+import pedringAdventures.main.entities.statics.houses.MainMap_HouseThree;
+import pedringAdventures.main.entities.statics.houses.MainMap_HouseTwo;
+import pedringAdventures.main.entities.statics.misc.BigTreeCenter;
+import pedringAdventures.main.entities.statics.misc.GrassTwo;
+import pedringAdventures.main.entities.statics.misc.TreeTwo;
 import pedringAdventures.main.tiles.Tile;
 import pedringAdventures.main.utils.Utils;
 
@@ -24,6 +30,7 @@ public class World {
 	
 	public World(Handler handler,String path) {
 		this.handler=handler;
+																		//map coordinates
 		entityManager= new EntityManager(handler, new  Player(handler, 100, 100));
 		
 		//grassTOP
@@ -87,21 +94,37 @@ public class World {
 		entityManager.addEntity(new TreeOne(handler,32*56, 32*7));
 		entityManager.addEntity(new TreeOne(handler,32*60, 32*10));
 		entityManager.addEntity(new TreeOne(handler,32*63, 32*13));
+		
+		entityManager.addEntity(new TreeOne(handler, 1340, 1010));
 		//end trees right side
 		
 		//end trees scattered
 		
 		//houses
 			entityManager.addEntity(new MainMap_HouseOne(handler, 150, 120));
-			
+			entityManager.addEntity(new MainMap_HouseTwo(handler, 1131, 285));
+			entityManager.addEntity(new MainMap_HouseThree(handler, 2080, 280));
+			entityManager.addEntity(new MainMap_HouseFour(handler, 167, 1023));
 		//end houses
 		
-		
-		
+		//grassscattered
+			for(int i=1;i<1532;i+=32) {entityManager.addEntity(new GrassTwo(handler, 32, 64+i));}
+			for(int i=1;i<400;i+=32) {entityManager.addEntity(new GrassTwo(handler, 64, 64+i));}
+			
+		//end grassscattered
+			//misc
+			entityManager.addEntity(new BigTreeCenter(handler, 1650, 700));
+			entityManager.addEntity(new TreeTwo(handler, 800, 710));
+			entityManager.addEntity(new TreeTwo(handler, 600, 300));
+			entityManager.addEntity(new TreeTwo(handler, 1950, 710));
+			entityManager.addEntity(new TreeTwo(handler, 1300, 1400));
+			entityManager.addEntity(new TreeTwo(handler, 2050, 1200));
+			//end misc
 		loadWorld(path);
 		entityManager.getPlayer().setX(spawnX);
 		entityManager.getPlayer().setY(spawnY);
 	}
+	
 	
 
 
