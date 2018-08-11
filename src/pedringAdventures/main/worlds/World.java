@@ -39,7 +39,6 @@ public class World {
 	private int spawnX,spawnY;
 	private int[][] tiles;
 	
-	private Random rand;
 	//entities
 	private EntityManager entityManager; 
 	

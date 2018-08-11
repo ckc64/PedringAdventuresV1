@@ -7,6 +7,7 @@ import java.util.Random;
 import pedringAdventures.main.display.Display;
 import pedringAdventures.main.gfx.Assets;
 import pedringAdventures.main.gfx.GameCamera;
+import pedringAdventures.main.gfx.MiscAssets;
 import pedringAdventures.main.input.KeyManager;
 import pedringAdventures.main.states.GameState;
 import pedringAdventures.main.states.MenuState;
@@ -27,7 +28,7 @@ public class Game implements Runnable {
 	private Graphics g;
 	
 	//States
-	private State gameState;
+	public State gameState;
 	private State menuState;
 	
 	//input
@@ -51,12 +52,13 @@ public class Game implements Runnable {
 		display = new Display(title, width, height);
 		display.getFrame().addKeyListener(keyManager);
 		Assets.init();
+		MiscAssets.init();
 		handler = new Handler(this);
 		gameCamera=new GameCamera(handler,0, 0);
 		
 		gameState = new GameState(handler);
 		menuState=new MenuState(handler);
-		State.setState(gameState);
+		State.setState(menuState);
 		
 	}
 	//can be name as update
