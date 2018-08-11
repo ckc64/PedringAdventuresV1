@@ -4,7 +4,6 @@ import java.awt.Graphics;
 
 import pedringAdventures.main.Handler;
 import pedringAdventures.main.gfx.Assets;
-import pedringAdventures.main.tiles.Tile;
 
 public class Grass extends StaticEntity {
 

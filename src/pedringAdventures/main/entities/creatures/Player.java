@@ -1,10 +1,8 @@
 package pedringAdventures.main.entities.creatures;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import pedringAdventures.main.Game;
 import pedringAdventures.main.Handler;
 import pedringAdventures.main.gfx.Animation;
 import pedringAdventures.main.gfx.Assets;
@@ -56,6 +54,9 @@ public class Player extends Creature {
 			xMove= -speed;
 		if(handler.getKeyManager().right)
 			xMove= +speed;
+		
+		System.out.println("X Position : "+getX());
+		System.out.println("Y Position : "+getY());
 	}
 	
 	@Override
@@ -78,4 +79,6 @@ public class Player extends Creature {
 			return animIdle.getCurrentFrame();
 		}
 	}
+	
+
 }

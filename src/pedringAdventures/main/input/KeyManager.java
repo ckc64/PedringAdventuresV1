@@ -3,10 +3,14 @@ package pedringAdventures.main.input;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import pedringAdventures.main.entities.EntityManager;
+import pedringAdventures.main.entities.creatures.Player;
+
 public class KeyManager implements KeyListener {
 
 	private boolean []keys;
 	public boolean up,down,left,right;
+	private EntityManager entityManager;
 	
 	public KeyManager() {
 		keys=new boolean[256];
@@ -23,6 +27,7 @@ public class KeyManager implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		keys[e.getKeyCode()]= true;
 		System.out.println("Pressed");
+	
 	}
 
 	@Override

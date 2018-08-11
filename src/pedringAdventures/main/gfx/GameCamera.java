@@ -1,6 +1,5 @@
 package pedringAdventures.main.gfx;
 
-import pedringAdventures.main.Game;
 import pedringAdventures.main.Handler;
 import pedringAdventures.main.entities.Entity;
 import pedringAdventures.main.tiles.Tile;

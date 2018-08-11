@@ -39,7 +39,7 @@ public abstract class Entity {
 	public Rectangle getCollisionBounds(float xOffset,float yOffset) {
 		return new Rectangle((int)(x + bounds.x + xOffset),(int)(y + bounds.y + yOffset),bounds.width,bounds.height);
 	}
-
+//you can use the getX and GetY to get the position of the character
 	public float getX() {
 		return x;
 	}
@@ -71,5 +71,7 @@ public abstract class Entity {
 	public void setHeight(int height) {
 		this.height = height;
 	}
+	
+	
 	
 }

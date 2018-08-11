@@ -14,8 +14,8 @@ private static final int charWidth = 32, charHeight = 32;
 	
 	//trees&grass
 	public static BufferedImage BigTreeCenter, treeOne,treeTwo,
-	noLeavesTree,grass,grassTwo,bigRock,rockOne,rockTwo,logOne,logTwo,
-	flowerOne,flowerTwo,flowerThree,chopTreeOne,chopTreeTwo,manyLogs;
+	noLeavesTree,grass,grassTwo,grassThree,bigRock,rockOne,rockTwo,rockThree,logOne,logTwo,logThree,
+	flowerOne,flowerTwo,flowerThree,chopTreeOne,chopTreeTwo;
 
 	public static BufferedImage bigPond;
 	
@@ -35,11 +35,26 @@ private static final int charWidth = 32, charHeight = 32;
 				SpriteSheet map1House=new SpriteSheet(ImageLoader.loadImage("/textures/map1_house.png"));
 				
 				//ground assets i.e trees,rock
-				treeOne=groundAssets.crop(0, 0, tileWidth, tileHeight+tileHeight);
-				grass=groundAssets.crop(tileWidth*4,tileHeight*2,tileWidth,tileHeight);
-				grassTwo=groundAssets.crop(tileWidth*3, tileHeight*2, tileWidth, tileHeight);
-				BigTreeCenter=groundAssets.crop(tileWidth*13, 0, tileWidth*4, tileHeight*5);
-				treeTwo=groundAssets.crop(tileWidth*6, tileHeight, tileWidth*2, tileHeight*2);
+					treeOne=groundAssets.crop(0, 0, tileWidth, tileHeight*2);
+					grass=groundAssets.crop(tileWidth*4,tileHeight*2,tileWidth,tileHeight);
+					grassTwo=groundAssets.crop(tileWidth*3, tileHeight*2, tileWidth, tileHeight);
+					BigTreeCenter=groundAssets.crop(tileWidth*13, 0, tileWidth*4, tileHeight*5);
+					treeTwo=groundAssets.crop(tileWidth*6, tileHeight, tileWidth*2, tileHeight*2);
+					logOne=groundAssets.crop(tileWidth*6, 0, tileWidth*2, tileHeight);
+					logTwo=groundAssets.crop(tileWidth*4, 0, tileWidth, tileHeight*2);
+					bigRock=groundAssets.crop(tileWidth, 0, tileWidth, tileHeight);
+					logThree=groundAssets.crop(tileWidth*8, 0, tileWidth*2, tileHeight);
+					bigPond=groundAssets.crop(0, tileHeight*3, tileWidth*7, tileHeight*6);
+					noLeavesTree=groundAssets.crop(tileWidth*10, 0,tileWidth*3, tileHeight*2);
+				
+					rockOne=groundAssets.crop(tileWidth*2, 0, tileWidth, tileHeight);
+					chopTreeOne=groundAssets.crop(tileWidth, tileHeight*2, tileWidth, tileHeight);
+					chopTreeTwo=groundAssets.crop(tileWidth, tileHeight, tileWidth, tileHeight);
+					flowerOne=groundAssets.crop(tileWidth*3, 0, tileWidth, tileHeight);
+					grassThree=groundAssets.crop(tileWidth*5,tileHeight*2,tileWidth,tileHeight);
+					flowerTwo=groundAssets.crop(tileWidth*5,0,tileWidth,tileHeight);
+					flowerThree=groundAssets.crop(tileWidth*2, tileHeight, tileWidth, tileHeight);
+					rockThree=groundAssets.crop(tileWidth*5,tileHeight,tileWidth,tileHeight);
 				//ground tiles
 				grassTile = groundTiles.crop(0, 0, tileWidth, tileHeight);
 				sandTile = groundTiles.crop(0, tileHeight, tileWidth, tileHeight);

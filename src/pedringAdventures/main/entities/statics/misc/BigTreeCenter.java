@@ -1,6 +1,5 @@
 package pedringAdventures.main.entities.statics.misc;
 
-import java.awt.Color;
 import java.awt.Graphics;
 
 import pedringAdventures.main.Handler;
@@ -30,8 +29,8 @@ public class BigTreeCenter extends StaticEntity {
 	public void render(Graphics g) {
 		g.drawImage(Assets.BigTreeCenter,(int)(x-handler.getGameCamera().getxOffset()), (int)(y-handler.getGameCamera().getyOffset()), width,height,null);
 		//DISPLAYING BOX
-		g.setColor(Color.red);
-		g.fillRect((int)(x+bounds.x - handler.getGameCamera().getxOffset()), (int)(y+bounds.y - handler.getGameCamera().getyOffset()), bounds.width, bounds.height);
+//		g.setColor(Color.red);
+//		g.fillRect((int)(x+bounds.x - handler.getGameCamera().getxOffset()), (int)(y+bounds.y - handler.getGameCamera().getyOffset()), bounds.width, bounds.height);
 		
 	}
 

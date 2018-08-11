@@ -2,7 +2,6 @@ package pedringAdventures.main.states;
 
 import java.awt.Graphics;
 
-import pedringAdventures.main.Game;
 import pedringAdventures.main.Handler;
 
 public abstract class State {

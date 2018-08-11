@@ -2,6 +2,7 @@ package pedringAdventures.main;
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.util.Random;
 
 import pedringAdventures.main.display.Display;
 import pedringAdventures.main.gfx.Assets;
@@ -16,7 +17,7 @@ public class Game implements Runnable {
 	private Display display;
 	
 	private int width, height;
-	
+	private Random rand;
 	public String title;
 	
 	private Thread thread;
@@ -87,6 +88,7 @@ public class Game implements Runnable {
 		g.dispose();
 	}
 	
+	@Override
 	public void run() {
 		
 		init();
@@ -157,4 +159,6 @@ public class Game implements Runnable {
 			e.printStackTrace();
 		}
 	}
+	
+
 }
