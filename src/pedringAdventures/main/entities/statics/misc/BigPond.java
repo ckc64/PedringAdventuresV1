@@ -27,4 +27,11 @@ public class BigPond extends StaticEntity {
 		
 	}
 
+	@Override
+	public void die() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
 }

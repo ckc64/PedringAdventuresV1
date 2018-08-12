@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 import pedringAdventures.main.Handler;
 import pedringAdventures.main.gfx.Assets;
+import pedringAdventures.main.items.Item;
 
 public class TreeOne extends StaticEntity {
 
@@ -32,6 +33,11 @@ public class TreeOne extends StaticEntity {
 //		g.setColor(Color.red);
 //		g.fillRect((int)(x+bounds.x - handler.getGameCamera().getxOffset()), (int)(y+bounds.y - handler.getGameCamera().getyOffset()), bounds.width, bounds.height);
 		
+	}
+
+	@Override
+	public void die() {
+		handler.getWorld().getItemManager().addItem(Item.treeItem.createNew((int)x, (int)y));
 	}
 
 }

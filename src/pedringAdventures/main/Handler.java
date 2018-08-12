@@ -2,6 +2,7 @@ package pedringAdventures.main;
 
 import pedringAdventures.main.gfx.GameCamera;
 import pedringAdventures.main.input.KeyManager;
+import pedringAdventures.main.input.MouseManager;
 import pedringAdventures.main.worlds.World;
 
 public class Handler {
@@ -19,6 +20,9 @@ public class Handler {
 	
 	public KeyManager getKeyManager() {
 		return game.getKeyManager();
+	}
+	public MouseManager getMouseManager() {
+		return game.getMouseManager();
 	}
 	
 	public int getWidth() {

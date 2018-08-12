@@ -4,19 +4,37 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import pedringAdventures.main.entities.EntityManager;
-import pedringAdventures.main.entities.creatures.Player;
 
 public class KeyManager implements KeyListener {
 
-	private boolean []keys,isKeyReleased;
-	public boolean up,down,left,right,enterKey,escKey;
+	private boolean []keys,justPressed,cantPress;
+	
+
+
+	public boolean up,down,left,right,enterKey,escKey
+	,attackKey,isKeyReleasedAndPressed=true;
 	private EntityManager entityManager;
 	
 	public KeyManager() {
 		keys=new boolean[256];
+		justPressed=new boolean[keys.length];
+		cantPress=new boolean[keys.length];
 	}
 	
 	public void tick() {
+		
+		for(int i=0;i<keys.length;i++) {
+			if(cantPress[i] &&  !keys[i]) {
+				cantPress[i]=false;
+			}else if(justPressed[i]) {
+				cantPress[i]=true;
+				justPressed[i]=false;
+			}
+			if(!cantPress[i] && keys[i]) {
+				justPressed[i]=true;
+			}
+		}
+		
 		up=keys[KeyEvent.VK_W];
 		down=keys[KeyEvent.VK_S];
 		left=keys[KeyEvent.VK_A];
@@ -24,8 +42,14 @@ public class KeyManager implements KeyListener {
 		enterKey=keys[KeyEvent.VK_ENTER];
 		escKey=keys[KeyEvent.VK_ESCAPE];
 		
+		attackKey=keys[KeyEvent.VK_I];
 	}
 	
+	public boolean keyJustPressed(int keyCode) {
+		if(keyCode < 0 || keyCode >= keys.length) return false;
+		return justPressed[keyCode];
+	}
+
 	public boolean[] getKeys() {
 		return keys;
 	}
@@ -33,19 +57,29 @@ public class KeyManager implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		if(e.getKeyCode() < 0 || e.getKeyCode()>=keys.length)
+			return;
 		keys[e.getKeyCode()]= true;
-		System.out.println("Pressed");
+	
 	
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		keys[e.getKeyCode()]= false;
+		if(e.getKeyCode() < 0 || e.getKeyCode()>=keys.length)
+			return;
+		keys[e.getKeyCode()]= !isKeyReleasedAndPressed;
 	}
 	
-	public boolean isReleased(int keyCode) {
-		return isKeyReleased[keyCode]=true;
+	public void setKeyReleasedAndPressed(boolean isKeyReleasedAndPressed) {
+		this.isKeyReleasedAndPressed = isKeyReleasedAndPressed;
+		System.out.println("Released : " +isKeyReleasedAndPressed);
 	}
+	
+	public boolean isKeyReleasedAndPressed() {
+		return isKeyReleasedAndPressed;
+	}
+
 
 	@Override
 	public void keyTyped(KeyEvent e) {

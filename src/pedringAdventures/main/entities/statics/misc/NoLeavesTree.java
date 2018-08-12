@@ -32,6 +32,12 @@ public class NoLeavesTree extends StaticEntity {
 //				g.setColor(Color.red);
 //				g.fillRect((int)(x+bounds.x - handler.getGameCamera().getxOffset()), (int)(y+bounds.y - handler.getGameCamera().getyOffset()), bounds.width, bounds.height);
 	}
+
+	@Override
+	public void die() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

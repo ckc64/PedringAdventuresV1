@@ -9,6 +9,7 @@ import pedringAdventures.main.gfx.Assets;
 import pedringAdventures.main.gfx.GameCamera;
 import pedringAdventures.main.gfx.MiscAssets;
 import pedringAdventures.main.input.KeyManager;
+import pedringAdventures.main.input.MouseManager;
 import pedringAdventures.main.states.GameState;
 import pedringAdventures.main.states.MenuState;
 import pedringAdventures.main.states.State;
@@ -33,6 +34,7 @@ public class Game implements Runnable {
 	
 	//input
 	private KeyManager keyManager;
+	private MouseManager mouseManager;
 	
 	//camera
 	private GameCamera gameCamera;
@@ -45,12 +47,17 @@ public class Game implements Runnable {
 		this.height = height;
 		this.title=title;
 		keyManager=new KeyManager();
+		mouseManager = new MouseManager();
 		
 	}
 	
 	private void init() {
 		display = new Display(title, width, height);
 		display.getFrame().addKeyListener(keyManager);
+		display.getFrame().addMouseListener(mouseManager);
+		display.getFrame().addMouseMotionListener(mouseManager);
+		display.getCanvas().addMouseListener(mouseManager);
+		display.getCanvas().addMouseMotionListener(mouseManager);
 		Assets.init();
 		MiscAssets.init();
 		handler = new Handler(this);
@@ -129,6 +136,10 @@ public class Game implements Runnable {
 	
 	public KeyManager getKeyManager() {
 		return keyManager;
+	}
+	
+	public MouseManager getMouseManager() {
+		return mouseManager;
 	}
 	
 	public GameCamera getGameCamera() {

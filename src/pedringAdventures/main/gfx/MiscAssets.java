@@ -8,7 +8,7 @@ public class MiscAssets {
 	
 	public static BufferedImage pressEnterText,startGameBtn,loadSaveGameBtn,quitGameBtn[];
 	public static BufferedImage [] leftArrow,rightArrow;
-	public static BufferedImage [] bground;
+	public static BufferedImage [] bground,gameMenusBtn;
 	public static BufferedImage logoPedring;
 	public static void init() {
 		
@@ -18,9 +18,14 @@ public class MiscAssets {
 //		startGameBtn=new BufferedImage[1];
 //		loadSaveGameBtn=new BufferedImage[1];
 //		quitGameBtn=new BufferedImage[1];
-	
-		startGameBtn=gameMenus.crop(0,0,width*4,height);
-		loadSaveGameBtn=gameMenus.crop(0,height,width*5,height);
+		gameMenusBtn = new BufferedImage[3];
+		
+		gameMenusBtn[0]=gameMenus.crop(0,0,width*4,height);
+		gameMenusBtn[1]=gameMenus.crop(0,height,width*5,height);
+		gameMenusBtn[2]=gameMenus.crop(0,height*2,width*2,height);
+		
+//		startGameBtn=gameMenus.crop(0,0,width*4,height);
+//		loadSaveGameBtn=gameMenus.crop(0,height,width*5,height);
 //		quitGameBtn[0]=gameMenus.crop(0,height*2,width*2,height);
 		
 		logoPedring=logo.crop(0, 0, width*15, height*7);

@@ -1,10 +1,13 @@
 package pedringAdventures.main.gfx;
 
+import java.awt.Font;
 import java.awt.image.BufferedImage;
 
 public class Assets {
 private static final int tileWidth = 32, tileHeight = 32;
 private static final int charWidth = 32, charHeight = 32;	
+
+public static Font font28;
 	//Main Character
 	
 	public static BufferedImage[] player_up, player_down, player_left, player_right,player_idle;
@@ -24,15 +27,18 @@ private static final int charWidth = 32, charHeight = 32;
 	public static BufferedImage grassTile,sandTile,sandUpperTileLeft,sandUpperTileRight,
 	sandBottomTileLeft,sandTileBottomRight,blackTile;
 	
-	
+	//inventory screen
+	public static BufferedImage inventoryScreen;
 	public static void init() {
 		
 		try {
+			font28 =FontLoader.loadFont("res/fonts/slkscr.ttf", 28);
 			//coordinates x,y and the width and height
 				SpriteSheet groundTiles=new SpriteSheet(ImageLoader.loadImage("/textures/ground_tiles16px.png"));
 				SpriteSheet player=new SpriteSheet(ImageLoader.loadImage("/textures/pedring.png"));
 				SpriteSheet groundAssets= new SpriteSheet(ImageLoader.loadImage("/textures/ground_assets.png"));
 				SpriteSheet map1House=new SpriteSheet(ImageLoader.loadImage("/textures/map1_house.png"));
+				inventoryScreen = ImageLoader.loadImage("/textures/inventoryScreen.png");
 				
 				//ground assets i.e trees,rock
 					treeOne=groundAssets.crop(0, 0, tileWidth, tileHeight*2);

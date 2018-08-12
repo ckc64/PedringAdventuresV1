@@ -1,8 +1,6 @@
 package pedringAdventures.main.worlds;
 
 import java.awt.Graphics;
-import java.util.Random;
-
 import pedringAdventures.main.Handler;
 import pedringAdventures.main.entities.EntityManager;
 import pedringAdventures.main.entities.creatures.Player;
@@ -29,6 +27,7 @@ import pedringAdventures.main.entities.statics.misc.NoLeavesTree;
 import pedringAdventures.main.entities.statics.misc.RockOne;
 import pedringAdventures.main.entities.statics.misc.RockThree;
 import pedringAdventures.main.entities.statics.misc.TreeTwo;
+import pedringAdventures.main.items.ItemManager;
 import pedringAdventures.main.tiles.Tile;
 import pedringAdventures.main.utils.Utils;
 
@@ -41,12 +40,13 @@ public class World {
 	
 	//entities
 	private EntityManager entityManager; 
-	
+	//item
+	private ItemManager itemManager;
 	public World(Handler handler,String path) {
 		this.handler=handler;
 																		//map coordinates
 		entityManager= new EntityManager(handler, new  Player(handler, 100, 100));
-		
+		itemManager=new ItemManager(handler);
 		//grassTOP
 		for(int i=1;i<83;i++) {entityManager.addEntity(new Grass(handler,32*i,32));}
 		entityManager.addEntity(new Grass(handler,32,0));
@@ -277,6 +277,8 @@ public class World {
 			entityManager.addEntity(new ChopTreeOne(handler, 600, 1410));
 			entityManager.addEntity(new ChopTreeTwo(handler, 830, 1410));
 			
+			//temporary
+			entityManager.addEntity(new BigRock(handler, 126, 64));
 			
 			//end misc
 			
@@ -291,6 +293,7 @@ public class World {
 
 
 	public void tick() {
+		itemManager.tick();
 		entityManager.tick();
 	}
 	
@@ -300,6 +303,7 @@ public class World {
 				getTile(x, y).render(g, (int) (x*Tile.TILEWIDTH-handler.getGameCamera().getxOffset()), (int)(y*Tile.TILEHEIGHT-handler.getGameCamera().getyOffset()));
 			}
 		}
+		itemManager.render(g);
 		entityManager.render(g);
 	}
 	
@@ -340,6 +344,20 @@ public class World {
 	
 	public EntityManager getEntityManager() {
 		return entityManager;
+	}
+
+
+
+
+	public ItemManager getItemManager() {
+		return itemManager;
+	}
+
+
+
+
+	public void setItemManager(ItemManager itemManager) {
+		this.itemManager = itemManager;
 	}
 	
 }

@@ -40,5 +40,12 @@ public class MainMap_HouseFour extends StaticEntity {
 //				g.fillRect((int)(x+bounds.x - handler.getGameCamera().getxOffset()), (int)(y+bounds.y - handler.getGameCamera().getyOffset()), bounds.width, bounds.height);
 	}
 
+
+	@Override
+	public void die() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 }

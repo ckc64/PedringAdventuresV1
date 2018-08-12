@@ -25,4 +25,10 @@ public class ChopTreeTwo extends StaticEntity {
 		g.drawImage(Assets.chopTreeTwo,(int)(x-handler.getGameCamera().getxOffset()), (int)(y-handler.getGameCamera().getyOffset()), width,height,null);
 	}
 
+	@Override
+	public void die() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

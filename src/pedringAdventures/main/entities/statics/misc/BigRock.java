@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import pedringAdventures.main.Handler;
 import pedringAdventures.main.entities.statics.StaticEntity;
 import pedringAdventures.main.gfx.Assets;
+import pedringAdventures.main.items.Item;
 
 public class BigRock extends StaticEntity {
 
@@ -23,6 +24,11 @@ public class BigRock extends StaticEntity {
 	public void render(Graphics g) {
 		// TODO Auto-generated method stub
 		g.drawImage(Assets.bigRock,(int)(x-handler.getGameCamera().getxOffset()), (int)(y-handler.getGameCamera().getyOffset()), width,height,null);
+	}
+	
+	@Override
+	public void die() {
+		handler.getWorld().getItemManager().addItem(Item.rockItem.createNew((int)x, (int)y));
 	}
 
 }
