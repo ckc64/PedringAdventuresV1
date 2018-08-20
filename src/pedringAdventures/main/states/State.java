@@ -13,11 +13,7 @@ public abstract class State {
 	}
 	
 	public static State getState() { return currentState; }
-//	protected Handler handler;
-//	protected Transition tran;
-//	public State(Handler handler, Transition tran){
-//		this.handler = handler; this.tran = tran;
-//	}
+
 	
 	//class
 	protected Handler handler;

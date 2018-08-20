@@ -11,6 +11,7 @@ import pedringAdventures.main.gfx.MiscAssets;
 import pedringAdventures.main.input.KeyManager;
 import pedringAdventures.main.input.MouseManager;
 import pedringAdventures.main.states.GameState;
+import pedringAdventures.main.states.LoadingState;
 import pedringAdventures.main.states.MenuState;
 import pedringAdventures.main.states.State;
 
@@ -29,7 +30,7 @@ public class Game implements Runnable {
 	private Graphics g;
 	
 	//States
-	public State gameState;
+	public State gameState,loadingState;
 	private State menuState;
 	
 	//input
@@ -64,6 +65,7 @@ public class Game implements Runnable {
 		gameCamera=new GameCamera(handler,0, 0);
 		
 		gameState = new GameState(handler);
+		loadingState=new LoadingState(handler);
 		menuState=new MenuState(handler);
 		State.setState(menuState);
 		

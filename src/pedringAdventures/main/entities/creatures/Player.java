@@ -64,7 +64,7 @@ public class Player extends Creature {
 		
 		if(inventory.isActive())
 			return;
-		
+		System.out.println("Attack : "+attackTimer);
 		
 		Rectangle cb = getCollisionBounds(0, 0);
 		Rectangle ar = new Rectangle();

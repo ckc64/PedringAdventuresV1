@@ -31,8 +31,6 @@ public class Inventory {
 	public Inventory(Handler handler) {
 		this.handler=handler;
 		inventoryItems=new ArrayList<Item>();
-		
-		
 	}
 	
 	public void tick() {

@@ -1,5 +1,6 @@
 package pedringAdventures.main.worlds;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import pedringAdventures.main.Handler;
 import pedringAdventures.main.entities.EntityManager;
@@ -305,6 +306,9 @@ public class World {
 		}
 		itemManager.render(g);
 		entityManager.render(g);
+		Color c = new Color(220,220, 220,50);
+		g.setColor(c);
+		g.fillRect(0, 0, handler.getWidth(), handler.getHeight());
 	}
 	
 	public Tile getTile(int x,int y) {

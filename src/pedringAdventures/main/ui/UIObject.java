@@ -10,7 +10,7 @@ public abstract class UIObject {
 	protected int width,height;
 	protected boolean hovering=false;
 	protected Rectangle bounds;
-	protected static boolean isAtStartGame=false,isAtLoadSaveGame=false,isAtQuitGame=false;
+
 	
 	public UIObject(float x,float y, int width,int height) {
 		this.x=x;

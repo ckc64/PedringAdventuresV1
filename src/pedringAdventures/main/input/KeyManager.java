@@ -14,6 +14,7 @@ public class KeyManager implements KeyListener {
 	public boolean up,down,left,right,enterKey,escKey
 	,attackKey,isKeyReleasedAndPressed=true;
 	private EntityManager entityManager;
+	public boolean upIsPressed,downIsPressed;
 	
 	public KeyManager() {
 		keys=new boolean[256];
@@ -45,6 +46,7 @@ public class KeyManager implements KeyListener {
 		attackKey=keys[KeyEvent.VK_I];
 	}
 	
+	
 	public boolean keyJustPressed(int keyCode) {
 		if(keyCode < 0 || keyCode >= keys.length) return false;
 		return justPressed[keyCode];
@@ -71,20 +73,28 @@ public class KeyManager implements KeyListener {
 		keys[e.getKeyCode()]= !isKeyReleasedAndPressed;
 	}
 	
-	public void setKeyReleasedAndPressed(boolean isKeyReleasedAndPressed) {
-		this.isKeyReleasedAndPressed = isKeyReleasedAndPressed;
-		System.out.println("Released : " +isKeyReleasedAndPressed);
-	}
-	
-	public boolean isKeyReleasedAndPressed() {
-		return isKeyReleasedAndPressed;
-	}
 
 
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public boolean isUpIsPressed() {
+		return upIsPressed;
+	}
+
+	public void setUpIsPressed(boolean upIsPressed) {
+		this.upIsPressed = upIsPressed;
+	}
+
+	public boolean isDownIsPressed() {
+		return downIsPressed;
+	}
+
+	public void setDownIsPressed(boolean downIsPressed) {
+		this.downIsPressed = downIsPressed;
 	}
 
 }

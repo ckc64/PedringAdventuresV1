@@ -8,13 +8,19 @@ public class MiscAssets {
 	
 	public static BufferedImage pressEnterText,startGameBtn,loadSaveGameBtn,quitGameBtn[];
 	public static BufferedImage [] leftArrow,rightArrow;
-	public static BufferedImage [] bground,gameMenusBtn;
+	public static BufferedImage [] bground,gameMenusBtn,loading;
 	public static BufferedImage logoPedring;
 	public static void init() {
 		
 		SpriteSheet gameMenus=new SpriteSheet(ImageLoader.loadImage("/bgmenus/main-menu-selection.png"));
 		SpriteSheet background=new SpriteSheet(ImageLoader.loadImage("/bgmenus/bg.png"));
 		SpriteSheet logo=new SpriteSheet(ImageLoader.loadImage("/bgmenus/LogoPedring.png"));
+		SpriteSheet loadingGUI=new SpriteSheet(ImageLoader.loadImage("/bgmenus/loading.png"));
+		
+		loading = new BufferedImage[2];
+		loading[0]=loadingGUI.crop(0,0,width*9,height);
+		loading[1]=loadingGUI.crop(0,height,width*9,height);
+		
 //		startGameBtn=new BufferedImage[1];
 //		loadSaveGameBtn=new BufferedImage[1];
 //		quitGameBtn=new BufferedImage[1];
@@ -22,7 +28,7 @@ public class MiscAssets {
 		
 		gameMenusBtn[0]=gameMenus.crop(0,0,width*4,height);
 		gameMenusBtn[1]=gameMenus.crop(0,height,width*5,height);
-		gameMenusBtn[2]=gameMenus.crop(0,height*2,width*2,height);
+		gameMenusBtn[2]=gameMenus.crop(0,height*2,width*3,height);
 		
 //		startGameBtn=gameMenus.crop(0,0,width*4,height);
 //		loadSaveGameBtn=gameMenus.crop(0,height,width*5,height);

@@ -34,12 +34,14 @@ public static Font font28;
 		try {
 			font28 =FontLoader.loadFont("res/fonts/slkscr.ttf", 28);
 			//coordinates x,y and the width and height
-				SpriteSheet groundTiles=new SpriteSheet(ImageLoader.loadImage("/textures/ground_tiles16px.png"));
+				SpriteSheet groundTiles=new SpriteSheet(ImageLoader.loadImage("/textures/dayAssets/ground_tiles16px.png"));
 				SpriteSheet player=new SpriteSheet(ImageLoader.loadImage("/textures/pedring.png"));
-				SpriteSheet groundAssets= new SpriteSheet(ImageLoader.loadImage("/textures/ground_assets.png"));
-				SpriteSheet map1House=new SpriteSheet(ImageLoader.loadImage("/textures/map1_house.png"));
+				SpriteSheet groundAssets= new SpriteSheet(ImageLoader.loadImage("/textures/dayAssets/ground_assets.png"));
+				SpriteSheet map1House=new SpriteSheet(ImageLoader.loadImage("/textures/dayAssets/map1_house.png"));
 				inventoryScreen = ImageLoader.loadImage("/textures/inventoryScreen.png");
 				
+				
+				//NIGHT ASSETS
 				//ground assets i.e trees,rock
 					treeOne=groundAssets.crop(0, 0, tileWidth, tileHeight*2);
 					grass=groundAssets.crop(tileWidth*4,tileHeight*2,tileWidth,tileHeight);

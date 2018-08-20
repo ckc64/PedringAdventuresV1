@@ -1,22 +1,38 @@
 package pedringAdventures.main.states;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-
+import java.util.ArrayList;
 
 import pedringAdventures.main.Handler;
 import pedringAdventures.main.gfx.Animation;
+import pedringAdventures.main.gfx.Assets;
 import pedringAdventures.main.gfx.MiscAssets;
+import pedringAdventures.main.gfx.Text;
+import pedringAdventures.main.loading.Loading;
 import pedringAdventures.main.ui.ClickListener;
+import pedringAdventures.main.ui.KeyListener;
 import pedringAdventures.main.ui.UIImageButton;
+import pedringAdventures.main.ui.UIImageButtonKeyboard;
 import pedringAdventures.main.ui.UIManager;
+import pedringAdventures.main.ui.UIManagerKeyBoard;
+import pedringAdventures.main.utils.Timer;
 
 public class MenuState extends State {
 	
 	private UIManager uiManager;
 	
-	protected static boolean isAtStartGame=false,isAtLoadSaveGame=false,isAtQuitGame=false;;
+	
 	private Animation animate,startGame,loadSaveGame,quitGame,leftArrow,rightArrow;
+	private Animation timerAnimation;
+	private LoadingState loadState;
+	private int menuXPos,menuYpos;
+	private ArrayList<BufferedImage> gameMenus;
+	private boolean isAtStartGame=false,isAtLoadSaveGame=false,isAtQuitGame=false;
+	private int selectedItem=0;
+
 
 	public MenuState(Handler handler) {
 		super(handler);
@@ -25,65 +41,101 @@ public class MenuState extends State {
 		animate = new Animation(2000,MiscAssets.bground);
 		leftArrow=new Animation(200,MiscAssets.leftArrow);
 		rightArrow=new Animation(200,MiscAssets.rightArrow);
-		isAtStartGame=true;
 		
+		gameMenus = new ArrayList<BufferedImage>();
+		for(int i=0;i<MiscAssets.gameMenusBtn.length;i++) {
+			gameMenus.add(MiscAssets.gameMenusBtn[i]);
+		}
 		
-		uiManager=new UIManager(handler);
-		handler.getMouseManager().setUIManager(uiManager);
-		uiManager.addObject(new UIImageButton(250, 280, 128, 32, MiscAssets.gameMenusBtn, new ClickListener() {
-			
-			@Override
-			public void onClick() {
-				handler.getMouseManager().setUIManager(null);
-				State.setState(handler.getGame().gameState);
-				
-			}
-		}));
 	}
 	
 	
 	@Override
 	public void tick() {
+		
 		animate.tick();
 		leftArrow.tick();
 		rightArrow.tick();
+	
 		
-//		if(handler.getMouseManager().isLeftPressed() && handler.getMouseManager().isRightPressed())
-//			State.setState(handler.getGame().gameState);
-//		
-//		if(handler.getKeyManager().enterKey) {
-//			State.setState(handler.getGame().gameState);
-//		}
-		uiManager.tick();
+//		uiManager.tick();
+		
+		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_A)) {
+			selectedItem--;
+		}
+		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_D)) {
+			selectedItem++;
+		}
+		
+		if(selectedItem<0)
+			selectedItem=gameMenus.size()-1;
+		else if(selectedItem>=gameMenus.size())
+			selectedItem=0;
+			
+		if(selectedItem==0) {
+			isAtLoadSaveGame=false;
+			isAtQuitGame=false;
+			isAtStartGame=true;
+		}else if(selectedItem==1) {
+			isAtStartGame=false;
+			isAtQuitGame=false;
+			isAtLoadSaveGame=true;
+		}else if(selectedItem==2) {
+			isAtStartGame=false;
+			isAtLoadSaveGame=false;
+			isAtQuitGame=true;
+		}
+		
+		if(handler.getKeyManager().enterKey) {
+			if(isAtStartGame==true) {
+				
+						State.setState(handler.getGame().loadingState);
+
+			}else if(isAtLoadSaveGame==true) {
+				System.out.println("No Save Game");
+			}else if(isAtQuitGame==true) {
+				System.exit(0);
+			}
+		}
+		
 	}
 	
 	
 	@Override
 	public void render(Graphics g) {
 		
-		
+	
 		g.drawImage(animateBground(), 0,0, 750,600, null);
 		g.drawImage(MiscAssets.logoPedring, 110, 100,null);
 		g.drawImage(MiscAssets.pressEnterText,320,390,null);
-		
-		g.drawImage(MiscAssets.startGameBtn,310,350,null);
-		//g.drawImage(MiscAssets.loadSaveGameBtn,295,352,null);
+
+	
 			g.drawImage(animateLeftArrow(), 250, 350, null);
 			g.drawImage(animateRightArrow(), 451, 350, null);
-			uiManager.render(g);
+//			uiManager.render(g);
+			
+			int len = gameMenus.size();
+			menuXPos=310;
+			menuYpos=350;
+			if(len==0)
+				return;
+			
+			//slot of inventory
+			for(int i=-1;i<3;i++) {
+				if(selectedItem+i<0 || selectedItem+i>=len)
+						continue;
+				if(i==0) {
+					menuXPos=310;
+					if(selectedItem==1)
+						menuXPos=292;
+					if(selectedItem==2)
+						menuXPos=315;
+					g.drawImage(gameMenus.get(selectedItem+i), menuXPos, menuYpos, null);
+				}
+				
+			}
 	}
 	
-//	public void menuSelection(Graphics g) {
-//		if(isAtStartGame) {
-//			if(handler.getKeyManager().left) {
-//				
-//				handler.getKeyManager().setKeyReleasedAndPressed(true);
-//				if(handler.getKeyManager().isKeyReleasedAndPressed()==true){
-//					g.drawImage(MiscAssets.loadSaveGameBtn,310,350,null);
-//				}
-//			}
-//		}
-//	}
 	
 	public BufferedImage animateBground() {
 		
