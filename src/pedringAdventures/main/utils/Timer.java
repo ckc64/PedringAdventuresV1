@@ -1,8 +1,6 @@
 package pedringAdventures.main.utils;
 
-import pedringAdventures.main.Game;
 import pedringAdventures.main.Handler;
-import pedringAdventures.main.states.State;
 
 public class Timer {
 	

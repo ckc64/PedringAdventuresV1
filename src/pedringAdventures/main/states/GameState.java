@@ -1,6 +1,5 @@
 package pedringAdventures.main.states;
 
-import java.awt.Color;
 import java.awt.Graphics;
 
 import pedringAdventures.main.Handler;

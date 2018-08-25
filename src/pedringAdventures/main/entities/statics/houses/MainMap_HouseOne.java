@@ -3,6 +3,7 @@ package pedringAdventures.main.entities.statics.houses;
 import java.awt.Graphics;
 
 import pedringAdventures.main.Handler;
+import pedringAdventures.main.entities.Entity;
 import pedringAdventures.main.entities.statics.StaticEntity;
 import pedringAdventures.main.gfx.Assets;
 
@@ -45,6 +46,14 @@ public class MainMap_HouseOne extends StaticEntity {
 	public void die() {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	@Override
+	public Entity clone() {
+		// TODO Auto-generated method stub
+		Entity e = new MainMap_HouseOne(handler, x, y);
+		return e;
 	}
 
 	

@@ -64,7 +64,7 @@ public class Player extends Creature {
 		
 		if(inventory.isActive())
 			return;
-		System.out.println("Attack : "+attackTimer);
+//		System.out.println("Attack : "+attackTimer);
 		
 		Rectangle cb = getCollisionBounds(0, 0);
 		Rectangle ar = new Rectangle();
@@ -121,9 +121,7 @@ public class Player extends Creature {
 			xMove= -speed;
 		if(handler.getKeyManager().right)
 			xMove= +speed;
-		
-		System.out.println("X Position : "+(int)getX());
-		System.out.println("Y Position : "+(int)getY());
+
 	}
 	
 	@Override
@@ -160,5 +158,16 @@ public class Player extends Creature {
 		this.inventory = inventory;
 	}
 	
+	public int getPlayerPositionX() {
+		return (int)getX();
+	}
+	public int getPlayerPositionY() {
+		return (int)getY();
+	}
 
+	@Override
+	public Entity clone() {
+		// TODO Auto-generated method stub
+	return null;
+	}
 }

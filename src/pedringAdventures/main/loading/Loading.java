@@ -1,13 +1,11 @@
 package pedringAdventures.main.loading;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import pedringAdventures.main.Handler;
 import pedringAdventures.main.gfx.ImageModifier;
 import pedringAdventures.main.states.LoadingState;
-import pedringAdventures.main.states.MenuState;
 import pedringAdventures.main.states.State;
 import pedringAdventures.main.utils.Colors;
 

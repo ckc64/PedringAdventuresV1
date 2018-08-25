@@ -3,6 +3,7 @@ package pedringAdventures.main.entities.statics.misc;
 import java.awt.Graphics;
 
 import pedringAdventures.main.Handler;
+import pedringAdventures.main.entities.Entity;
 import pedringAdventures.main.entities.statics.StaticEntity;
 import pedringAdventures.main.gfx.Assets;
 import pedringAdventures.main.items.Item;
@@ -29,6 +30,13 @@ public class BigRock extends StaticEntity {
 	@Override
 	public void die() {
 		handler.getWorld().getItemManager().addItem(Item.rockItem.createNew((int)x, (int)y));
+	}
+
+	@Override
+	public Entity clone() {
+		// TODO Auto-generated method stub
+		Entity e = new BigRock(handler, x, y);
+		return e;
 	}
 
 }

@@ -3,6 +3,8 @@ package pedringAdventures.main.tiles;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import pedringAdventures.main.tiles.houseOneTiles.WoodTile;
+
 public class Tile {
 	
 	//static variables
@@ -15,6 +17,10 @@ public class Tile {
 	public static Tile sandTileUpperBottomLeft=new SandTileBottomLeft(4);
 	public static Tile sandTileBottomRight=new SandTileBottomRight(5);
 	public static Tile blackTile=new BlackTile(6);
+	
+	//House One Tile
+	public static Tile woodTile = new WoodTile(7);
+	
 	//class
 	public static final int TILEWIDTH=64,TILEHEIGHT=64;
 	

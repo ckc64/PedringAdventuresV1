@@ -1,6 +1,5 @@
 package pedringAdventures.main.states;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -8,17 +7,8 @@ import java.util.ArrayList;
 
 import pedringAdventures.main.Handler;
 import pedringAdventures.main.gfx.Animation;
-import pedringAdventures.main.gfx.Assets;
 import pedringAdventures.main.gfx.MiscAssets;
-import pedringAdventures.main.gfx.Text;
-import pedringAdventures.main.loading.Loading;
-import pedringAdventures.main.ui.ClickListener;
-import pedringAdventures.main.ui.KeyListener;
-import pedringAdventures.main.ui.UIImageButton;
-import pedringAdventures.main.ui.UIImageButtonKeyboard;
 import pedringAdventures.main.ui.UIManager;
-import pedringAdventures.main.ui.UIManagerKeyBoard;
-import pedringAdventures.main.utils.Timer;
 
 public class MenuState extends State {
 	

@@ -6,6 +6,7 @@ import java.util.Random;
 
 import pedringAdventures.main.display.Display;
 import pedringAdventures.main.gfx.Assets;
+import pedringAdventures.main.gfx.FurnitureAssets;
 import pedringAdventures.main.gfx.GameCamera;
 import pedringAdventures.main.gfx.MiscAssets;
 import pedringAdventures.main.input.KeyManager;
@@ -14,6 +15,7 @@ import pedringAdventures.main.states.GameState;
 import pedringAdventures.main.states.LoadingState;
 import pedringAdventures.main.states.MenuState;
 import pedringAdventures.main.states.State;
+import pedringAdventures.main.states.MapOneHouseStates.MapOneHouseOneStates;
 
 public class Game implements Runnable {
 	
@@ -30,8 +32,8 @@ public class Game implements Runnable {
 	private Graphics g;
 	
 	//States
-	public State gameState,loadingState;
-	private State menuState;
+	public State gameState,loadingState,houseOneState;
+	public State menuState;
 	
 	//input
 	private KeyManager keyManager;
@@ -61,12 +63,16 @@ public class Game implements Runnable {
 		display.getCanvas().addMouseMotionListener(mouseManager);
 		Assets.init();
 		MiscAssets.init();
+		FurnitureAssets.init();
 		handler = new Handler(this);
 		gameCamera=new GameCamera(handler,0, 0);
 		
 		gameState = new GameState(handler);
 		loadingState=new LoadingState(handler);
 		menuState=new MenuState(handler);
+		
+		//house States
+		houseOneState=new MapOneHouseOneStates(handler);
 		State.setState(menuState);
 		
 	}

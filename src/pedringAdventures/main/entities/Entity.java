@@ -12,8 +12,11 @@ public abstract class Entity {
 	protected int health;
 	public static final int DEFAULT_HEALTH=3;
 	protected int width,height;
-	protected boolean active=true;
+	public static boolean active=true;
 	protected Rectangle bounds;
+	public boolean isLoading=true;
+	
+	
 	public Entity(Handler handler,float x, float y,int width,int height) {
 		this.x=x;
 		this.y=y;
@@ -27,6 +30,7 @@ public abstract class Entity {
 	
 	public abstract void tick();
 	public abstract void render(Graphics g);
+	public abstract Entity clone();
 	public abstract void die();
 	public void hurt (int amt) {
 		health-=amt;

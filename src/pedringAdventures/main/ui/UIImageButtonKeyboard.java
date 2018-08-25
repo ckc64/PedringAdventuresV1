@@ -1,7 +1,6 @@
 package pedringAdventures.main.ui;
 
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 import pedringAdventures.main.Handler;

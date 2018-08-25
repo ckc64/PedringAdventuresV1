@@ -3,6 +3,7 @@ package pedringAdventures.main.entities.statics;
 import java.awt.Graphics;
 
 import pedringAdventures.main.Handler;
+import pedringAdventures.main.entities.Entity;
 import pedringAdventures.main.gfx.Assets;
 import pedringAdventures.main.items.Item;
 
@@ -38,6 +39,12 @@ public class TreeOne extends StaticEntity {
 	@Override
 	public void die() {
 		handler.getWorld().getItemManager().addItem(Item.treeItem.createNew((int)x, (int)y));
+	}
+
+	@Override
+	public Entity clone() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

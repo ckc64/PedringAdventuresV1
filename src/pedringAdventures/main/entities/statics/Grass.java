@@ -3,6 +3,7 @@ package pedringAdventures.main.entities.statics;
 import java.awt.Graphics;
 
 import pedringAdventures.main.Handler;
+import pedringAdventures.main.entities.Entity;
 import pedringAdventures.main.gfx.Assets;
 
 public class Grass extends StaticEntity {
@@ -28,6 +29,12 @@ public class Grass extends StaticEntity {
 	public void die() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Entity clone() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

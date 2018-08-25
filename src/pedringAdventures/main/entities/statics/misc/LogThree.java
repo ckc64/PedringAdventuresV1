@@ -3,6 +3,7 @@ package pedringAdventures.main.entities.statics.misc;
 import java.awt.Graphics;
 
 import pedringAdventures.main.Handler;
+import pedringAdventures.main.entities.Entity;
 import pedringAdventures.main.entities.statics.StaticEntity;
 import pedringAdventures.main.gfx.Assets;
 
@@ -29,6 +30,13 @@ public class LogThree extends StaticEntity {
 	public void die() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Entity clone() {
+		// TODO Auto-generated method stub
+		Entity e = new LogThree(handler, x, y);
+		return e;
 	}
 
 }
